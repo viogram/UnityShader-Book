@@ -51,7 +51,7 @@ Shader "Custom/SS_NormalMapTagentSpace"
                 o.uv_tex=TRANSFORM_TEX(v.texcoord,_MainTex);
                 o.uv_normal=TRANSFORM_TEX(v.texcoord,_BumpMap);
 
-                float3 binormal=cross(normalize(v.normal), normalize(v.tangent.xyz)) * v.tangent.w;
+                float3 binormal=normalize(cross(normalize(v.normal), normalize(v.tangent.xyz))) * v.tangent.w;
                 //从模型空间变换到切线空间的矩阵
                 float3x3 rotation=float3x3(v.tangent.xyz, binormal, v.normal);
                //ObjSpaceLightDir返回模型空间中从该点到光源的光照方向
